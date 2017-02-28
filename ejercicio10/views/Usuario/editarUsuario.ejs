@@ -2,7 +2,8 @@
 
   <h1>Editar Usuarios</h1>
   <p>¡Edite sus usuarios!</p>
-
+  <div class="row">
+    <div class="col-sm-8">
   <form action="Usuario/editarUsuario" method="post">
     <div class="form-group">
       <label for="exampleInputEmail1">Nombre</label>
@@ -20,4 +21,15 @@
     <br>
 
   </form>
+      </div>
+      <div class="col-sm-4">
+
+      <h3 class="text-center"> <%=usuarios.nombre%></h3>
+        <h4 class="text-center"> <%=usuarios.preferencia%></h4>
+        <p class="text-center">
+          <%= usuarios.fechaNacimiento %>
+        </p>
+    </div>
+  </div>
 </div>
+
