@@ -62,22 +62,22 @@ module.exports = {
     },
 
     crearAgarre: function (req, res) {
-        return res.view('Usuario/crearUsuario', {
-            title: 'Crear Usuarios'
+        return res.view('Agarre/crearAgarre', {
+            title: 'Crear Agarres'
         })
     },
     listarAgarre: function (req, res) {
-        Usuario.find().exec(function (error, usuariosEncontrados) {
+        Agarre.find().exec(function (error, agarresEncontrados) {
             if (error) return res.view('error', {
                 title: 'Error',
                 error: {
-                    descripcion: 'Error al listar usuario: ' + error,
-                    url: '/Usuario/listarUsuario'
+                    descripcion: 'Error al listar agarre: ' + error,
+                    url: '/Agarre/listarAgarre'
                 }
             });
-            return res.view('Usuario/listarUsuario', {
-                title: 'Lista de Usuarios',
-                usuarios: usuariosEncontrados
+            return res.view('Agarre/listarAgarre', {
+                title: 'Lista de Agarres',
+                agarres: agarresEncontrados
             });
         });
 
@@ -86,19 +86,19 @@ module.exports = {
     editarAgarre: function (req, res) {
         var parametros = req.allParams();
         if (parametros.id) {
-            Usuario.findOne({
+            Agarre.findOne({
                 id: parametros.id
-            }).exec(function (error, usuarioEncontrado) {
+            }).exec(function (error, agarreEncontrado) {
                 if (error) return res.view('error', {
                     title: 'Error',
                     error: {
-                        descripcion: 'Error al editar usuario: ' + error,
-                        url: '/Usuario/editarUsuario'
+                        descripcion: 'Error al editar agarre: ' + error,
+                        url: '/Agarre/editarAgarre'
                     }
                 });
-                return res.view('Usuario/editarUsuario', {
-                    title: 'Editar Usuario -' + usuarioEncontrado.nombre,
-                    usuarios: usuarioEncontrado
+                return res.view('Agarre/editarAgarre', {
+                    title: 'Editar Agarre -' + agarreEncontrado.nombre,
+                    agarres: agarreEncontrado
                 })
             })
         } else {
@@ -106,7 +106,7 @@ module.exports = {
                 title: 'Error',
                 error: {
                     descripcion: 'Error con el ID',
-                    url: '/Usuario/editarUsuario'
+                    url: '/Agarre/editarAgarre'
                 }
             });
         }
