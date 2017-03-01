@@ -6,11 +6,11 @@
         <h3 class="text-center"> Preferencia:  <%=usuarios[i].preferencia%></h3>
         <h3 class="text-center"> Fecha de nacimiento:  <%=usuarios[i].fechaNacimiento%></h3>
   
-    <a style="color:white" href="/Usuario/destroy/<%=usuarios[i].id%>">
+    <a style="color:white" href="/Usuario/borrarUsuario?id=<%=usuarios[i].id%>">
       <button class="btn btn-block btn-danger"> Borrar</button>
     </a>
         <br>
-    <a style="color:white" href="/editarUsuario?id=<%=usuarios[i].id%>">
+    <a style="color:white" href="/EditarUsuario?id=<%=usuarios[i].id%>">
       <button class="btn btn-block btn-success"> Editar</button>
     </a>
   </div>

@@ -22,7 +22,7 @@ module.exports = {
                 title: 'Error',
                 error: {
                     descripcion: 'Error al listar usuario: ' + error,
-                    url: '/Usuario/listarUsuario'
+                    url: '/listarUsuario'
                 }
             });
             return res.view('Usuario/listarUsuario', {
@@ -41,30 +41,38 @@ module.exports = {
                 if (error) return res.view('error', {
                     title: 'Error',
                     error: {
-                        descripcion: 'Error al editar usuario: ' + error,
-                        url: '/Usuario/editarUsuario'
+                        descripcion: 'Error al editar usuario: ' + error
                     }
                 });
                 return res.view('Usuario/editarUsuario', {
                     title: 'Editar Usuario -' + usuarioEncontrado.nombre,
                     usuarios: usuarioEncontrado
                 })
-            })
+            });
         } else {
             res.view('error', {
                 title: 'Error',
                 error: {
-                    descripcion: 'Error con el ID',
-                    url: '/Usuario/editarUsuario'
+                    descripcion: 'Error con el ID'
                 }
             });
         }
     },
 
     crearAgarre: function (req, res) {
+        Usuario.find().exec(function(error,usuariosEncontrados){
+            if (error) return res.view('error', {
+                    title: 'Error',
+                    error: {
+                        descripcion: 'Error al encontrar usuarios: ' + error
+                    }
+                });
         return res.view('Agarre/crearAgarre', {
-            title: 'Crear Agarres'
+            title: 'Crear Agarres',
+            usuarios:usuariosEncontrados
+        });
         })
+        
     },
     listarAgarre: function (req, res) {
         Agarre.find().exec(function (error, agarresEncontrados) {
@@ -72,7 +80,7 @@ module.exports = {
                 title: 'Error',
                 error: {
                     descripcion: 'Error al listar agarre: ' + error,
-                    url: '/Agarre/listarAgarre'
+                    url: '/listarAgarre'
                 }
             });
             return res.view('Agarre/listarAgarre', {
@@ -84,7 +92,14 @@ module.exports = {
 
     },
     editarAgarre: function (req, res) {
-        var parametros = req.allParams();
+        Usuario.find().exec(function(error,usuariosEncontrados){
+            if (error) return res.view('error', {
+                    title: 'Error',
+                    error: {
+                        descripcion: 'Error al encontrar usuarios: ' + error
+                    }
+                });
+                    var parametros = req.allParams();
         if (parametros.id) {
             Agarre.findOne({
                 id: parametros.id
@@ -92,31 +107,31 @@ module.exports = {
                 if (error) return res.view('error', {
                     title: 'Error',
                     error: {
-                        descripcion: 'Error al editar agarre: ' + error,
-                        url: '/Agarre/editarAgarre'
+                        descripcion: 'Error al editar agarre: ' + error
                     }
                 });
                 return res.view('Agarre/editarAgarre', {
                     title: 'Editar Agarre -' + agarreEncontrado.nombre,
-                    agarres: agarreEncontrado
-                })
+                    usuarios: usuariosEncontrados,
+                    agarres:agarreEncontrado
+                });
             })
         } else {
             res.view('error', {
                 title: 'Error',
                 error: {
-                    descripcion: 'Error con el ID',
-                    url: '/Agarre/editarAgarre'
+                    descripcion: 'Error con el ID'
                 }
             });
         }
+        })
+
     },
     error: function (req, res) {
         return res.view('error', {
             title: 'Error',
             error: {
-                descripcion: 'Error en el sistema',
-                url: '/error'
+                descripcion: 'Error en el sistema'
             }
         });
     }
