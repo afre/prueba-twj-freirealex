@@ -1,21 +1,21 @@
 <div class="row">
 
-  <% for(var i=0; i<agarres.length; i++){ %>
-  
-  <div class="col-sm-4">
-    <h3 class="text-center"> ID: <%=agarres[i].id%> -  <%=agarres[i].nombre%></h3>
-    <h4 class="text-center"> Veces: <%=agarres[i].fechaNacimiento%></h4>
-    <p class="text-center">Dinero gastado:
-      <%= agarres[i].dineroGastado %>
-    </p>
-    <a style="color:white" href="/Agarre/borrarAgarre?id=<%=agarres[i].id%>">
-      <button class="btn btn-block btn-danger"> Borrar</button>
-    </a>
-    <br>
-    <a style="color:white" href="/editarAgarre?id=<%=agarres[i].id%>">
-      <button class="btn btn-block btn-success"> Editar</button>
-    </a>
-  </div>
-  <%  } %>
+    <% for(var i=0; i<agarres.length; i++){ %>
+
+        <div class="col-sm-4">
+            <h3 class="text-center"> ID: <%=agarres[i].id%> -  <%=agarres[i].nombre%></h3>
+            <h4 class="text-center"> Veces: <%=agarres[i].veces%></h4>
+            <p class="text-center">Dinero gastado:
+                <%= agarres[i].dineroGastado %>
+            </p>
+            <a style="color:white" href="/Agarre/borrarAgarre?id=<%=agarres[i].id%>">
+                <button class="btn btn-block btn-danger"> Borrar</button>
+            </a>
+            <br>
+            <a style="color:white" href="/editarAgarre?id=<%=agarres[i].id%>">
+                <button class="btn btn-block btn-success"> Editar</button>
+            </a>
+        </div>
+        <%  } %>
 
 </div>

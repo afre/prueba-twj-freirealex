@@ -60,19 +60,19 @@ module.exports = {
     },
 
     crearAgarre: function (req, res) {
-        Usuario.find().exec(function(error,usuariosEncontrados){
+        Usuario.find().exec(function (error, usuariosEncontrados) {
             if (error) return res.view('error', {
-                    title: 'Error',
-                    error: {
-                        descripcion: 'Error al encontrar usuarios: ' + error
-                    }
-                });
-        return res.view('Agarre/crearAgarre', {
-            title: 'Crear Agarres',
-            usuarios:usuariosEncontrados
-        });
+                title: 'Error',
+                error: {
+                    descripcion: 'Error al encontrar usuarios: ' + error
+                }
+            });
+            return res.view('Agarre/crearAgarre', {
+                title: 'Crear Agarres',
+                usuarios: usuariosEncontrados
+            });
         })
-        
+
     },
     listarAgarre: function (req, res) {
         Agarre.find().exec(function (error, agarresEncontrados) {
@@ -92,38 +92,38 @@ module.exports = {
 
     },
     editarAgarre: function (req, res) {
-        Usuario.find().exec(function(error,usuariosEncontrados){
+        Usuario.find().exec(function (error, usuariosEncontrados) {
             if (error) return res.view('error', {
-                    title: 'Error',
-                    error: {
-                        descripcion: 'Error al encontrar usuarios: ' + error
-                    }
-                });
-                    var parametros = req.allParams();
-        if (parametros.id) {
-            Agarre.findOne({
-                id: parametros.id
-            }).exec(function (error, agarreEncontrado) {
-                if (error) return res.view('error', {
-                    title: 'Error',
-                    error: {
-                        descripcion: 'Error al editar agarre: ' + error
-                    }
-                });
-                return res.view('Agarre/editarAgarre', {
-                    title: 'Editar Agarre -' + agarreEncontrado.nombre,
-                    usuarios: usuariosEncontrados,
-                    agarres:agarreEncontrado
-                });
-            })
-        } else {
-            res.view('error', {
                 title: 'Error',
                 error: {
-                    descripcion: 'Error con el ID'
+                    descripcion: 'Error al encontrar usuarios: ' + error
                 }
             });
-        }
+            var parametros = req.allParams();
+            if (parametros.id) {
+                Agarre.findOne({
+                    id: parametros.id
+                }).exec(function (error, agarreEncontrado) {
+                    if (error) return res.view('error', {
+                        title: 'Error',
+                        error: {
+                            descripcion: 'Error al editar agarre: ' + error
+                        }
+                    });
+                    return res.view('Agarre/editarAgarre', {
+                        title: 'Editar Agarre -' + agarreEncontrado.nombre,
+                        usuarios: usuariosEncontrados,
+                        agarres: agarreEncontrado
+                    });
+                })
+            } else {
+                res.view('error', {
+                    title: 'Error',
+                    error: {
+                        descripcion: 'Error con el ID'
+                    }
+                });
+            }
         })
 
     },

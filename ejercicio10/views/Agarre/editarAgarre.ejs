@@ -1,45 +1,45 @@
 <div style='background-color:white;color:black;'>
 
-  <h1>Editar Agarres</h1>
-  <p>¡Edita tus agarres!</p>
-  <div class="row">
-    <div class="col-sm-8">
-  <form action="Agarre/editarAgarre" method="post">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nombre</label>
-      <input minlength=5 required type="text" class="form-control"  placeholder="Nombre" name="nombre">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Veces</label>
-      <input minlength=1 required type="text" class="form-control"  placeholder="Veces" name="veces">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Dinero gastado</label>
-      <input minlength=1 required type="text" class="form-control"  placeholder="Dinero gastado" name="dineroGastado">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Usuario</label>
-    <select class="form-control" name="idUsuario">
-      <% for(var i=0; i<usuarios.length; i++){ %>
-        <option value='<%=usuarios[i].id%>'>
-          <%=usuarios[i].nombre%>
-        </option>
-        <%  } %>
-    </select>
-    </div>    
-    
-    <button type="submit" class="btn btn-success">Editar Agarre</button>
-    <br>
+    <h1>Editar Agarres</h1>
+    <p>¡Edita tus agarres!</p>
+    <div class="row">
+        <div class="col-sm-8">
+            <form action="Agarre/editarAgarre" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre</label>
+                    <input minlength=5 required type="text" class="form-control" placeholder="Nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Veces</label>
+                    <input minlength=1 required type="text" class="form-control" placeholder="Veces" name="veces">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Dinero gastado</label>
+                    <input minlength=1 required type="text" class="form-control" placeholder="Dinero gastado" name="dineroGastado">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <select class="form-control" name="idUsuario">
+                        <% for(var i=0; i<usuarios.length; i++){ %>
+                            <option value='<%=usuarios[i].id%>'>
+                                <%=usuarios[i].nombre%>
+                            </option>
+                            <%  } %>
+                    </select>
+                </div>
+                <input type="hidden" name="id" value="<%=agarres.id%>">
+                <button type="submit" class="btn btn-success">Editar Agarre</button>
+                <br>
 
-  </form>
-       </div>
+            </form>
+        </div>
         <div class="col-sm-4">
 
-      <h3 class="text-center"> <%=agarres.nombre%></h3>
-        <h4 class="text-center"> <%=agarres.veces%></h4>
-        <p class="text-center">
-          <%= agarres.dineroGastado %>
-        </p>
+            <h3 class="text-center"> <%=agarres.nombre%></h3>
+            <h4 class="text-center"> <%=agarres.veces%></h4>
+            <p class="text-center">
+                <%= agarres.dineroGastado %>
+            </p>
+        </div>
     </div>
-  </div>
 </div>

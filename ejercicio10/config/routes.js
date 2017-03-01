@@ -40,7 +40,7 @@ module.exports.routes = {
     'get /CrearAgarre': 'RutasController.crearAgarre',
     'get /ListarAgarre': 'RutasController.listarAgarre',
     'get /EditarAgarre': 'RutasController.editarAgarre',
-    'get /Error': 'RutasController.error'    
+    'get /Error': 'RutasController.error'
 
     /***************************************************************************
      *                                                                          *
